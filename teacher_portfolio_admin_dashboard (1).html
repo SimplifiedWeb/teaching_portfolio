@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaikh Faizan Sajjad | Educator Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        app: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            primary: 'var(--color-primary)', 
+                            secondary: 'var(--color-secondary)', 
+                            text: 'var(--color-text)',
+                            textLight: 'var(--color-text-light)',
+                            border: 'var(--color-border)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'blob': 'blob 10s infinite alternate',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '100%': { transform: 'translate(30px, -30px) scale(1.1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Base Theme Variables */
+        :root {
+            --color-bg: #FAFAFA;
+            --color-card: #FFFFFF;
+            --color-primary: #a8a493; 
+            --color-secondary: #dddace;
+            --color-text: #1a1a1a;
+            --color-text-light: #6b7280;
+            --color-border: rgba(0,0,0,0.05);
+        }
+        
+        .dark {
+            --color-bg: #121212;
+            --color-card: #1c1c1c;
+            --color-primary: #dddace; 
+            --color-secondary: #3f3e3a; 
+            --color-text: #f3f4f6;
+            --color-text-light: #9ca3af;
+            --color-border: rgba(255,255,255,0.05);
+        }
+
+        body { 
+            font-family: '"Plus Jakarta Sans"', sans-serif; 
+            background-color: var(--color-bg); 
+            color: var(--color-text); 
+            scroll-behavior: smooth; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+            overflow-x: hidden; 
+        }
+        
+        .bento-card {
+            background-color: var(--color-card);
+            border-radius: 2rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.06);
+        }
+        .dark .bento-card:hover { box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); }
+
+        .abstract-bg { position: absolute; z-index: -1; filter: blur(60px); border-radius: 50%; pointer-events: none; }
+        .bg-shape-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: var(--color-secondary); opacity: 0.4; }
+        .bg-shape-2 { top: 40%; right: -10%; width: 500px; height: 500px; background: #c6c3b6; opacity: 0.3; }
+        .dark .bg-shape-1 { opacity: 0.15; }
+        .dark .bg-shape-2 { background: #5a5852; opacity: 0.15; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--color-secondary); border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #4a4a4a; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .loader { border: 2px solid var(--color-bg); border-radius: 50%; border-top: 2px solid var(--color-primary); width: 20px; height: 20px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .carousel-container { scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+        .carousel-item { scroll-snap-align: start; }
+        
+        .skeleton { background: linear-gradient(90deg, var(--color-bg) 25%, var(--color-secondary) 50%, var(--color-bg) 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite; opacity: 0.5; }
+        @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen relative selection:bg-app-secondary selection:text-app-text">
+
+    <!-- Top Navigation Bar (Slim height: 16/64px) -->
+    <nav class="fixed top-0 left-0 w-full z-[90] bg-app-bg/90 backdrop-blur-xl border-b border-app-border transition-colors duration-300">
+        <div class="max-w-[1200px] mx-auto px-5 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="app.goHome()">
+                <div class="w-9 h-9 rounded-[0.8rem] bg-app-text text-app-bg flex items-center justify-center font-bold text-base shadow-sm">S</div>
+                <span class="font-bold text-base tracking-tight">Shaikh Faizan</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="javascript:void(0)" onclick="app.goHome()" class="text-sm font-semibold text-app-textLight hover:text-app-text transition-colors">Home</a>
+                <a href="#public-all-subjects" class="text-sm font-semibold text-app-textLight hover:text-app-text transition-colors">Subjects</a>
+                <a href="#public-all-resources" class="text-sm font-semibold text-app-textLight hover:text-app-text transition-colors">Library</a>
+                <a href="#public-journey" class="text-sm font-semibold text-app-textLight hover:text-app-text transition-colors">Journey</a>
+                <a href="javascript:void(0)" onclick="app.scrollToContact()" class="text-sm font-semibold text-app-textLight hover:text-app-text transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button onclick="app.toggleTheme()" class="w-9 h-9 rounded-full flex items-center justify-center text-app-textLight hover:bg-app-border transition-colors">
+                    <i class="fas fa-moon theme-icon text-sm"></i>
+                </button>
+                <a href="#admin" class="w-9 h-9 rounded-full flex items-center justify-center text-app-textLight hover:bg-app-border transition-colors">
+                    <i class="fas fa-user-circle text-sm"></i>
+                </a>
+                <button class="md:hidden w-9 h-9 rounded-full flex items-center justify-center text-app-text hover:bg-app-border transition-colors" onclick="app.toggleMobileMenu()">
+                    <i class="fas fa-bars text-sm"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Clean Mobile Dropdown Menu -->
+        <div id="mobile-dropdown" class="md:hidden absolute top-16 left-0 w-full bg-app-card border-b border-app-border shadow-xl py-4 px-6 flex flex-col gap-3 transition-all duration-300 opacity-0 pointer-events-none -translate-y-2">
+            <a href="javascript:void(0)" onclick="app.toggleMobileMenu(); app.goHome();" class="py-2 text-sm font-bold text-app-text border-b border-app-border flex items-center justify-between">Home <i class="fas fa-chevron-right text-xs text-app-textLight"></i></a>
+            <a href="#public-all-subjects" onclick="app.toggleMobileMenu();" class="py-2 text-sm font-bold text-app-text border-b border-app-border flex items-center justify-between">Subjects <i class="fas fa-chevron-right text-xs text-app-textLight"></i></a>
+            <a href="#public-all-resources" onclick="app.toggleMobileMenu();" class="py-2 text-sm font-bold text-app-text border-b border-app-border flex items-center justify-between">Library <i class="fas fa-chevron-right text-xs text-app-textLight"></i></a>
+            <a href="#public-journey" onclick="app.toggleMobileMenu();" class="py-2 text-sm font-bold text-app-text border-b border-app-border flex items-center justify-between">Journey <i class="fas fa-chevron-right text-xs text-app-textLight"></i></a>
+            <a href="javascript:void(0)" onclick="app.toggleMobileMenu(); app.scrollToContact();" class="py-2 text-sm font-bold text-app-text flex items-center justify-between">Contact <i class="fas fa-chevron-right text-xs text-app-textLight"></i></a>
+        </div>
+    </nav>
+
+    <!-- Custom Modal System -->
+    <div id="custom-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+        <div class="bg-app-card rounded-[2rem] shadow-2xl max-w-sm w-full overflow-hidden transform transition-all p-8 text-center border border-app-border">
+            <div id="modal-icon" class="mx-auto flex items-center justify-center h-16 w-16 rounded-[1.5rem] mb-5 bg-app-secondary text-app-text">
+                <i class="fas fa-info-circle text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-app-text mb-2" id="modal-title">Notification</h3>
+            <p class="text-sm text-app-textLight mb-8 font-medium" id="modal-message">Message goes here.</p>
+            <div class="flex flex-col gap-3" id="modal-actions">
+                <button id="modal-btn-confirm" class="w-full py-3.5 bg-app-text text-app-bg rounded-2xl hover:opacity-95 transition-opacity text-sm font-bold">Got it</button>
+                <button id="modal-btn-cancel" class="hidden w-full py-3.5 bg-app-bg text-app-text rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-sm font-bold">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <button id="ai-chat-btn" onclick="app.toggleChat()" class="fixed bottom-6 right-6 w-14 h-14 bg-app-text text-app-bg rounded-[1.5rem] shadow-xl flex items-center justify-center hover:-translate-y-1 transition-transform z-50">
+        <i class="fas fa-sparkles text-xl"></i>
+    </button>
+    <div id="ai-chat-window" class="fixed bottom-24 right-6 w-[calc(100vw-3rem)] sm:w-[360px] bg-app-card rounded-[2rem] border border-app-border shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
+        <div class="p-4 flex justify-between items-center border-b border-app-border bg-app-bg/50">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-[0.8rem] bg-app-secondary text-app-text flex items-center justify-center"><i class="fas fa-robot text-sm"></i></div>
+                <div>
+                    <h3 class="font-bold text-app-text text-xs">AI Assistant</h3>
+                    <p class="text-[9px] text-app-textLight font-bold uppercase tracking-wider">Online</p>
+                </div>
+            </div>
+            <button onclick="app.toggleChat()" class="text-app-textLight hover:text-app-text w-7 h-7 rounded-full bg-app-bg flex items-center justify-center"><i class="fas fa-times text-xs"></i></button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 h-72 overflow-y-auto bg-app-bg/30 space-y-3 text-xs scroll-smooth">
+            <div class="bg-app-card p-3 rounded-[1rem] rounded-tl-sm border border-app-border text-app-text max-w-[85%] shadow-sm font-medium">
+                Hi! I'm Mr. Shaikh's AI assistant. Ask me anything about Biology, Java, or IT! 👋
+            </div>
+        </div>
+        <div class="p-3 bg-app-card flex gap-2 border-t border-app-border">
+            <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 px-3 py-2.5 bg-app-bg rounded-[0.8rem] border border-app-border text-xs outline-none text-app-text font-medium focus:border-app-primary transition-colors" onkeypress="if(event.key === 'Enter') app.sendChatMessage()">
+            <button onclick="app.sendChatMessage()" class="w-10 h-10 bg-app-text text-app-bg rounded-[0.8rem] flex items-center justify-center hover:opacity-90 active:scale-95 transition-all"><i class="fas fa-paper-plane text-xs"></i></button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="app-root" class="flex-grow w-full relative pt-16"></main>
+
+    <!-- TEMPLATES -->
+    <div id="templates" class="hidden">
+        
+        <!-- PUBLIC HOMEPAGE -->
+        <div id="tpl-public-view">
+            <div class="abstract-bg bg-shape-1 animate-blob"></div>
+            <div class="abstract-bg bg-shape-2 animate-blob" style="animation-delay: 2s;"></div>
+
+            <!-- Hero Section -->
+            <header class="max-w-[1200px] mx-auto px-5 sm:px-6 pt-12 pb-16 sm:pt-20 sm:pb-20 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="flex-1 reveal text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-app-secondary/40 text-app-text text-[11px] font-bold mb-5 border border-app-border">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Available for Academic Roles
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-app-text mb-4 leading-[1.15] tracking-tight">
+                        Inspiring Minds through <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-400 dark:from-gray-300 dark:to-gray-600">Technology & Biology</span>.
+                    </h1>
+                    <p class="text-sm sm:text-base text-app-textLight mb-8 font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        I am Shaikh Faizan Sajjad, an IT, Java, and Biology Educator dedicated to making complex concepts easy to understand for beginners.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start w-full">
+                        <a href="javascript:void(0)" onclick="app.downloadResume()" class="w-full sm:w-auto px-7 py-3.5 rounded-[1.2rem] bg-app-text text-app-bg font-bold hover:-translate-y-0.5 transition-transform shadow-lg shadow-app-text/10 text-center text-sm">Download Resume</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('home-resources').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto px-7 py-3.5 rounded-[1.2rem] bg-app-card border border-app-border text-app-text font-bold hover:bg-app-bg transition-colors text-center text-sm">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="w-48 sm:w-full sm:max-w-[360px] reveal delay-200">
+                    <div class="bento-card p-2 bg-app-card aspect-square relative flex items-center justify-center overflow-hidden group">
+                        <div class="absolute inset-0 bg-app-secondary opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <i class="fas fa-user-tie text-[80px] sm:text-[110px] text-app-textLight z-10 transition-transform duration-500 group-hover:scale-110"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Marquee -->
+            <div class="w-full bg-app-text text-app-bg py-3 overflow-hidden border-y border-app-textLight/20">
+                <div class="whitespace-nowrap flex items-center text-xs font-bold tracking-widest uppercase relative w-[200%]">
+                    <div class="animate-marquee flex gap-10 min-w-full">
+                        <span>🚀 Transforming Ideas into Code</span> <span>•</span>
+                        <span>🧬 Inspiring Minds with Biology</span> <span>•</span>
+                        <span>☕ Building the Future with Java</span> <span>•</span>
+                        <span>💻 IT Education Specialist</span> <span>•</span>
+                    </div>
+                    <div class="animate-marquee flex gap-10 min-w-full absolute top-0">
+                        <span>🚀 Transforming Ideas into Code</span> <span>•</span>
+                        <span>🧬 Inspiring Minds with Biology</span> <span>•</span>
+                        <span>☕ Building the Future with Java</span> <span>•</span>
+                        <span>💻 IT Education Specialist</span> <span>•</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subjects Carousel -->
+            <section class="max-w-[1200px] mx-auto px-5 sm:px-6 py-16 relative z-10">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 reveal gap-3">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-app-text tracking-tight mb-1">Subjects I Teach</h2>
+                        <p class="text-xs sm:text-sm text-app-textLight font-medium">Explore the curriculum and modules.</p>
+                    </div>
+                    <div class="flex gap-2 self-start sm:self-auto">
+                        <a href="#public-all-subjects" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-[0.8rem] bg-app-card border border-app-border text-xs font-bold text-app-text hover:bg-app-bg transition-colors">View All</a>
+                        <div id="subjects-nav-btns" class="flex gap-2 hidden">
+                            <button onclick="document.getElementById('subjects-carousel').scrollBy({left: -280, behavior: 'smooth'})" class="w-9 h-9 rounded-full bg-app-card border border-app-border flex items-center justify-center text-app-text hover:bg-app-bg transition-colors"><i class="fas fa-chevron-left text-xs"></i></button>
+                            <button onclick="document.getElementById('subjects-carousel').scrollBy({left: 280, behavior: 'smooth'})" class="w-9 h-9 rounded-full bg-app-card border border-app-border flex items-center justify-center text-app-text hover:bg-app-bg transition-colors"><i class="fas fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="subjects-carousel" class="flex overflow-x-auto carousel-container no-scrollbar gap-4 pb-4 reveal delay-100 -mx-5 px-5 sm:mx-0 sm:px-0"></div>
+                <div class="sm:hidden mt-3 text-center reveal">
+                     <a href="#public-all-subjects" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-[1rem] bg-app-card border border-app-border text-xs font-bold text-app-text hover:bg-app-bg transition-colors">View All Subjects</a>
+                </div>
+            </section>
+
+            <!-- Demo Lectures -->
+            <section class="py-16 bg-app-card border-y border-app-border relative z-10">
+                <div class="max-w-[1200px] mx-auto px-5 sm:px-6">
+                    <div class="text-center mb-12 reveal">
+                        <span class="px-3.5 py-1 rounded-full bg-app-bg border border-app-border text-[10px] font-bold text-app-textLight uppercase tracking-widest mb-3 inline-block">Free Previews</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-app-text tracking-tight mb-2">Demo Lectures</h2>
+                        <p class="text-xs sm:text-sm text-app-textLight font-medium max-w-md mx-auto">Watch a selection of my teaching style.</p>
+                    </div>
+                    <div id="render-demos" class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal delay-100"></div>
+                </div>
+            </section>
+
+            <!-- YouTube Channel Banner -->
+            <section class="py-16 relative z-10 overflow-hidden">
+                <div class="max-w-[1200px] mx-auto px-5 sm:px-6 relative z-10">
+                    <div class="bento-card bg-app-card p-6 sm:p-10 flex flex-col md:flex-row items-center gap-8 reveal border border-app-border">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center mb-5 mx-auto md:mx-0">
+                                <i class="fab fa-youtube text-2xl"></i>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-app-text tracking-tight mb-3">Learn on YouTube</h2>
+                            <p class="text-xs sm:text-sm text-app-textLight font-medium mb-6 leading-relaxed max-w-md mx-auto md:mx-0">Subscribe to my channel for free tutorials, crash courses, and exam preparation guides.</p>
+                            <a href="https://youtube.com" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[1.2rem] bg-red-600 text-white font-bold hover:bg-red-700 transition-colors text-sm">
+                                Visit Channel <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                        <div class="w-full md:w-1/2 rounded-[1.5rem] overflow-hidden border border-app-border shadow-lg relative aspect-video bg-app-bg flex items-center justify-center group cursor-pointer" onclick="window.open('https://youtube.com', '_blank')">
+                             <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" alt="YouTube">
+                             <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center relative z-10 shadow-lg group-hover:scale-110 transition-transform">
+                                 <i class="fas fa-play ml-0.5 text-base"></i>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Carousel -->
+            <section id="home-resources" class="max-w-[1200px] mx-auto px-5 sm:px-6 py-16 relative z-10">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 reveal gap-3">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-app-text tracking-tight mb-1">Library & Notes</h2>
+                        <p class="text-xs sm:text-sm text-app-textLight font-medium">Download PDFs, worksheets, and syllabus guides.</p>
+                    </div>
+                    <div class="flex gap-2 self-start sm:self-auto">
+                        <a href="#public-all-resources" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-[0.8rem] bg-app-card border border-app-border text-xs font-bold text-app-text hover:bg-app-bg transition-colors">View All</a>
+                        <div id="resources-nav-btns" class="flex gap-2 hidden">
+                            <button onclick="document.getElementById('resources-carousel').scrollBy({left: -280, behavior: 'smooth'})" class="w-9 h-9 rounded-full bg-app-card border border-app-border flex items-center justify-center text-app-text hover:bg-app-bg transition-colors"><i class="fas fa-chevron-left text-xs"></i></button>
+                            <button onclick="document.getElementById('resources-carousel').scrollBy({left: 280, behavior: 'smooth'})" class="w-9 h-9 rounded-full bg-app-card border border-app-border flex items-center justify-center text-app-text hover:bg-app-bg transition-colors"><i class="fas fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="resources-carousel" class="flex overflow-x-auto carousel-container no-scrollbar gap-4 pb-4 reveal delay-100 -mx-5 px-5 sm:mx-0 sm:px-0"></div>
+                <div class="sm:hidden mt-3 text-center reveal">
+                     <a href="#public-all-resources" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-[1rem] bg-app-card border border-app-border text-xs font-bold text-app-text hover:bg-app-bg transition-colors">View All Resources</a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact-section" class="py-16 relative z-10">
+                 <div class="max-w-[800px] mx-auto px-5 sm:px-6 text-center reveal">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-app-text tracking-tight mb-3">Let's Connect</h2>
+                    <p class="text-xs sm:text-sm text-app-textLight font-medium mb-8 leading-relaxed">Interested in hiring me for an academic role, or need a tutor? Feel free to reach out.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                        <div class="bento-card p-5 bg-app-card flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-app-secondary/30 text-app-text mb-3 flex items-center justify-center"><i class="fas fa-envelope text-xs"></i></div>
+                            <h4 class="font-bold text-xs mb-0.5">Email</h4>
+                            <p class="text-[11px] font-medium text-app-textLight break-all">faizanshaikh2002320@gmail.com</p>
+                        </div>
+                        <div class="bento-card p-5 bg-app-card flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-app-secondary/30 text-app-text mb-3 flex items-center justify-center"><i class="fas fa-phone text-xs"></i></div>
+                            <h4 class="font-bold text-xs mb-0.5">Phone</h4>
+                            <p class="text-[11px] font-medium text-app-textLight">+91 9823568633</p>
+                        </div>
+                        <div class="bento-card p-5 bg-app-card flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-app-secondary/30 text-app-text mb-3 flex items-center justify-center"><i class="fas fa-map-marker-alt text-xs"></i></div>
+                            <h4 class="font-bold text-xs mb-0.5">Location</h4>
+                            <p class="text-[11px] font-medium text-app-textLight">Miraj, Maharashtra</p>
+                        </div>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); app.ui.showModal('Success', 'Thank you! Your message has been received.', 'info'); this.reset();" class="bento-card p-6 sm:p-8 bg-app-card text-left max-w-xl mx-auto space-y-4">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                             <div>
+                                 <label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Name</label>
+                                 <input type="text" required class="w-full px-4 py-3 bg-app-bg rounded-[0.8rem] border border-app-border outline-none text-xs font-medium focus:border-app-text transition-colors">
+                             </div>
+                             <div>
+                                 <label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Email</label>
+                                 <input type="email" required class="w-full px-4 py-3 bg-app-bg rounded-[0.8rem] border border-app-border outline-none text-xs font-medium focus:border-app-text transition-colors">
+                             </div>
+                         </div>
+                         <div>
+                             <label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Message</label>
+                             <textarea required rows="3" class="w-full px-4 py-3 bg-app-bg rounded-[0.8rem] border border-app-border outline-none text-xs font-medium focus:border-app-text transition-colors resize-none"></textarea>
+                         </div>
+                         <button type="submit" class="w-full py-3.5 bg-app-text text-app-bg rounded-[0.8rem] font-bold shadow-md hover:opacity-95 transition-opacity text-xs">Send Message</button>
+                    </form>
+                 </div>
+            </section>
+            
+            <footer class="py-8 border-t border-app-border text-center text-app-textLight text-xs font-medium">
+                <p>&copy; 2026 Shaikh Faizan Sajjad. All rights reserved.</p>
+                <div class="flex justify-center gap-5 mt-3">
+                    <a href="https://github.com/SimplifiedWeb" target="_blank" class="hover:text-app-text transition-colors"><i class="fab fa-github text-lg"></i></a>
+                    <a href="#" class="hover:text-app-text transition-colors"><i class="fab fa-linkedin text-lg"></i></a>
+                </div>
+            </footer>
+        </div>
+
+        <!-- ALL SUBJECTS VIEW -->
+        <div id="tpl-public-all-subjects" class="min-h-screen py-20 max-w-[1200px] mx-auto px-5 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <button onclick="app.goHome()" class="flex items-center gap-2 text-xs font-bold text-app-textLight hover:text-app-text mb-3 transition-colors"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <h1 class="text-3xl font-extrabold text-app-text tracking-tight">All Subjects</h1>
+                </div>
+                <div class="relative w-full sm:w-64">
+                    <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-app-textLight text-xs"></i>
+                    <input type="text" id="search-subjects" placeholder="Search subjects..." class="w-full pl-10 pr-4 py-2.5 bg-app-card border border-app-border rounded-[0.8rem] outline-none text-xs font-medium text-app-text focus:border-app-primary transition-colors" onkeyup="app.filterList('subjects')">
+                </div>
+            </div>
+            <div id="full-subjects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- ALL RESOURCES VIEW -->
+        <div id="tpl-public-all-resources" class="min-h-screen py-20 max-w-[1200px] mx-auto px-5 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <button onclick="app.goHome()" class="flex items-center gap-2 text-xs font-bold text-app-textLight hover:text-app-text mb-3 transition-colors"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <h1 class="text-3xl font-extrabold text-app-text tracking-tight">Resource Library</h1>
+                </div>
+                <div class="relative w-full sm:w-64">
+                    <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-app-textLight text-xs"></i>
+                    <input type="text" id="search-resources" placeholder="Search files..." class="w-full pl-10 pr-4 py-2.5 bg-app-card border border-app-border rounded-[0.8rem] outline-none text-xs font-medium text-app-text focus:border-app-primary transition-colors" onkeyup="app.filterList('resources')">
+                </div>
+            </div>
+            <div id="full-resources-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- TEACHING JOURNEY VIEW -->
+        <div id="tpl-public-journey" class="min-h-screen py-20 max-w-[1200px] mx-auto px-5 sm:px-6">
+            <div class="mb-8">
+                <button onclick="app.goHome()" class="flex items-center gap-2 text-xs font-bold text-app-textLight hover:text-app-text mb-3 transition-colors"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                <h1 class="text-3xl font-extrabold text-app-text tracking-tight mb-1">Teaching Journey</h1>
+                <p class="text-xs text-app-textLight font-medium">Moments from the classroom, labs, and student feedback.</p>
+            </div>
+            <div id="full-journey-grid" class="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5"></div>
+        </div>
+
+        <!-- ADMIN LOGIN VIEW -->
+        <div id="tpl-admin-login" class="min-h-screen flex items-center justify-center px-5 py-20 relative z-10">
+            <div class="bento-card p-8 max-w-sm w-full bg-app-card text-center">
+                <div class="mx-auto h-14 w-14 bg-app-secondary/30 text-app-text rounded-[1.2rem] flex items-center justify-center mb-5">
+                    <i class="fas fa-lock text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-app-text mb-1">Admin Access</h2>
+                <p class="text-xs font-medium text-app-textLight mb-6">Demo: <b>admin@demo.com</b> / <b>admin123</b></p>
+                
+                <form id="login-form" class="space-y-3.5 text-left">
+                    <div>
+                        <input type="email" id="login-email" placeholder="Email Address" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors">
+                    </div>
+                    <div>
+                        <input type="password" id="login-password" placeholder="Password" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors">
+                    </div>
+                    <button type="submit" id="login-btn" class="w-full bg-app-text text-app-bg py-3.5 rounded-[0.8rem] font-bold hover:opacity-90 transition-opacity mt-2 text-xs">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD VIEW -->
+        <div id="tpl-admin-dashboard" class="min-h-screen pt-16 flex flex-col bg-app-bg">
+            <div class="bg-app-card border-b border-app-border px-5 py-3 sticky top-16 z-40 flex overflow-x-auto no-scrollbar gap-2">
+                <button onclick="app.loadAdminModule('overview')" class="admin-nav-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-app-text text-app-bg transition-colors shadow-sm" data-module="overview">Overview</button>
+                <button onclick="app.loadAdminModule('subjects')" class="admin-nav-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-app-bg border border-app-border text-app-textLight hover:text-app-text transition-colors" data-module="subjects">Subjects</button>
+                <button onclick="app.loadAdminModule('resources')" class="admin-nav-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-app-bg border border-app-border text-app-textLight hover:text-app-text transition-colors" data-module="resources">Resources</button>
+                <button onclick="app.loadAdminModule('journey')" class="admin-nav-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-app-bg border border-app-border text-app-textLight hover:text-app-text transition-colors" data-module="journey">Journey</button>
+                <button onclick="app.loadAdminModule('ailab')" class="admin-nav-btn px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 border border-indigo-100 dark:border-indigo-800 transition-colors" data-module="ailab"><i class="fas fa-sparkles mr-1"></i> AI Lab</button>
+                <button onclick="app.logout()" class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap bg-red-50 dark:bg-red-900/20 text-red-500 border border-red-100 dark:border-red-900 transition-colors ml-auto">Logout</button>
+            </div>
+            
+            <div class="flex-1 p-5 max-w-[900px] w-full mx-auto">
+                <div class="flex justify-between items-center mb-5">
+                    <h2 id="admin-module-title" class="text-2xl font-extrabold text-app-text tracking-tight">Overview</h2>
+                    <button id="admin-add-btn" class="hidden bg-app-text text-app-bg px-4 py-2 rounded-[0.8rem] text-xs font-bold hover:-translate-y-0.5 transition-transform"><i class="fas fa-plus mr-1.5"></i> Add New</button>
+                </div>
+                <div id="admin-module-content" class="bento-card p-6 min-h-[350px]"></div>
+            </div>
+        </div>
+
+        <!-- Generic CRUD Form Template -->
+        <div id="tpl-crud-form" class="hidden">
+            <form id="dynamic-form" class="space-y-4">
+                <div class="flex justify-end mb-2">
+                     <button type="button" onclick="app.enhanceContentWithAI()" class="px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 text-[11px] font-bold rounded-lg border border-indigo-100 dark:border-indigo-800 hover:bg-indigo-100 transition-colors"><i class="fas fa-magic mr-1"></i> AI Enhance Form</button>
+                </div>
+                <div id="form-fields-container" class="space-y-4"></div>
+                <div class="flex gap-3 pt-4 border-t border-app-border mt-6">
+                    <button type="button" onclick="app.closeForm()" class="flex-1 py-3 bg-app-bg border border-app-border text-app-text font-bold rounded-[0.8rem] text-xs hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+                    <button type="submit" id="form-submit-btn" class="flex-1 py-3 bg-app-text text-app-bg font-bold rounded-[0.8rem] text-xs hover:opacity-90 transition-opacity">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'courserio-faizan-1';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "mock", authDomain: "mock", projectId: "mock", storageBucket: "mock"
+        };
+
+        let appInstance, auth, db;
+        try {
+            appInstance = initializeApp(firebaseConfig);
+            auth = getAuth(appInstance);
+            db = getFirestore(appInstance);
+        } catch (e) {
+            console.error("Firebase init failed:", e);
+        }
+
+        window.app = {
+            currentUser: null,
+            currentAdminModule: 'overview',
+            useLocalFallback: false,
+            data: { 
+                subjects: [
+                    { id: 'sub-1', title: 'Class 11-12 Information Technology', classes: 'Class 11 & 12', description: 'Complete syllabus covering Python, MySQL, computer networks, and web development basics.' },
+                    { id: 'sub-2', title: 'Class 11-12 Biology', classes: 'Class 11 & 12', description: 'Detailed botany and zoology instruction tailored for academic excellence and board exams.' },
+                    { id: 'sub-3', title: 'Java Programming', classes: 'Beginner to Advanced', description: 'Core OOP concepts, exception handling, collections, and real-world project building.' }
+                ], 
+                resources: [
+                    { id: 'res-1', title: 'Python Programming Question Bank 2026', subject: 'Information Technology', type: 'Question Bank', link: '#' },
+                    { id: 'res-2', title: 'Human Physiology Revision Notes', subject: 'Biology', type: 'Notes', link: '#' },
+                    { id: 'res-3', title: 'Java OOP Practice Worksheet', subject: 'Java Programming', type: 'Worksheet', link: '#' }
+                ], 
+                videos: [], 
+                journey: [
+                    { id: 'j-1', caption: 'Teaching students how to connect frontend to backend databases in the IT lab.', type: 'photo', image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop' },
+                    { id: 'j-2', caption: 'Thank you Sir! My biology score improved tremendously after your revision sessions!', type: 'feedback', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop' }
+                ] 
+            },
+            isFetching: { subjects: false, resources: false, videos: false, journey: false },
+            unsubscribeList: [],
+            lastPublicScroll: 0,
+            
+            toggleMobileMenu() {
+                const dropdown = document.getElementById('mobile-dropdown');
+                if (dropdown.classList.contains('opacity-0')) {
+                    dropdown.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+                    dropdown.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                } else {
+                    dropdown.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    dropdown.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+                }
+            },
+
+            getCollectionPath(collectionName) {
+                return `artifacts/${currentAppId}/public/data/${collectionName}`;
+            },
+
+            async callGeminiAPI(prompt, systemInstruction = null) {
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                if (systemInstruction) payload.systemInstruction = { parts: [{ text: systemInstruction }] };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates[0].content) {
+                        return result.candidates[0].content.parts[0].text;
+                    }
+                    return "I'm sorry, I couldn't process that request.";
+                } catch (error) {
+                    return "Connection error. Please try again.";
+                }
+            },
+            
+            async generateFormImage() {
+                const title = document.getElementById('form-title')?.value || document.getElementById('form-caption')?.value;
+                if (!title) {
+                    this.ui.showModal('Notice', 'Please enter a title or caption first so the AI knows what to generate!', 'info');
+                    return;
+                }
+                const input = document.getElementById('form-image');
+                input.value = "Generating AI Image...";
+                input.disabled = true;
+                
+                try {
+                    const payload = {
+                        contents: [{ parts: [{ text: `A modern, minimalist, clean, pastel-colored educational flat illustration representing: ${title}. High quality, centered, no text.` }] }],
+                        generationConfig: { responseModalities: ['IMAGE'] },
+                    };
+                    const apiKey = "";
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-image:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                    if (base64Data) {
+                        input.value = `data:image/png;base64,${base64Data}`;
+                    } else {
+                        throw new Error("No image data generated");
+                    }
+                } catch(e) {
+                    input.value = "";
+                    this.ui.showModal('Error', 'Image generation failed. Try again.', 'error');
+                } finally {
+                    input.disabled = false;
+                }
+            },
+
+            base64ToArrayBuffer(base64) {
+                const binaryString = window.atob(base64);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) { bytes[i] = binaryString.charCodeAt(i); }
+                return bytes.buffer;
+            },
+
+            pcmToWav(pcm16, sampleRate) {
+                const numChannels = 1;
+                const byteRate = sampleRate * numChannels * 2;
+                const blockAlign = numChannels * 2;
+                const dataSize = pcm16.length * 2;
+                const buffer = new ArrayBuffer(44 + dataSize);
+                const view = new DataView(buffer);
+                const writeString = (v, offset, str) => {
+                    for (let i = 0; i < str.length; i++) { v.setUint8(offset + i, str.charCodeAt(i)); }
+                };
+                writeString(view, 0, 'RIFF');
+                view.setUint32(4, 36 + dataSize, true);
+                writeString(view, 8, 'WAVE');
+                writeString(view, 12, 'fmt ');
+                view.setUint32(16, 16, true);
+                view.setUint16(20, 1, true);
+                view.setUint16(22, numChannels, true);
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, byteRate, true);
+                view.setUint16(32, blockAlign, true);
+                view.setUint16(34, 16, true);
+                writeString(view, 36, 'data');
+                view.setUint32(40, dataSize, true);
+                let offset = 44;
+                for (let i = 0; i < pcm16.length; i++, offset += 2) { view.setInt16(offset, pcm16[i], true); }
+                return new Blob([view], { type: 'audio/wav' });
+            },
+
+            async playAudioSummary(title, desc, btnId) {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin text-xs"></i>';
+                btn.disabled = true;
+                
+                try {
+                    const payload = {
+                        contents: [{ parts: [{ text: `Say in a warm, encouraging teacher's voice: Welcome to ${title}. ${desc}` }] }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } }
+                        },
+                        model: "gemini-2.5-flash-preview-tts"
+                    };
+                    const apiKey = "";
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    const audioData = part?.inlineData?.data;
+                    const mimeType = part?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        let sampleRate = 24000;
+                        const match = mimeType.match(/rate=(\d+)/);
+                        if (match) sampleRate = parseInt(match[1], 10);
+                        
+                        const pcmData = this.base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = this.pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        const audio = new Audio(audioUrl);
+                        audio.play();
+                        btn.innerHTML = '<i class="fas fa-volume-up text-green-500 text-xs"></i>';
+                        audio.onended = () => { btn.innerHTML = originalHtml; btn.disabled = false; };
+                    } else { throw new Error("No audio returned"); }
+                } catch(e) {
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                    this.ui.showModal("Audio Error", "Could not generate audio at this time.", "error");
+                }
+            },
+
+            toggleChat() {
+                const window = document.getElementById('ai-chat-window');
+                if (window.classList.contains('opacity-0')) {
+                    window.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    window.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    setTimeout(() => document.getElementById('chat-input').focus(), 300);
+                } else {
+                    window.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    window.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                }
+            },
+            
+            appendChatMessage(text, isUser = false) {
+                const chatContainer = document.getElementById('chat-messages');
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `p-3 rounded-[1rem] text-xs font-medium shadow-sm w-fit max-w-[85%] ${
+                    isUser ? 'bg-app-text text-app-bg rounded-tr-sm ml-auto' 
+                           : 'bg-app-card text-app-text rounded-tl-sm mr-auto border border-app-border'
+                }`;
+                msgDiv.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                chatContainer.appendChild(msgDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            },
+            
+            async sendChatMessage() {
+                const inputEl = document.getElementById('chat-input');
+                const text = inputEl.value.trim();
+                if (!text) return;
+                inputEl.value = '';
+                inputEl.disabled = true;
+                this.appendChatMessage(text, true);
+
+                const chatContainer = document.getElementById('chat-messages');
+                const typingId = 'typing-' + Date.now();
+                chatContainer.insertAdjacentHTML('beforeend', `<div id="${typingId}" class="bg-app-card p-3 rounded-[1rem] rounded-tl-sm border border-app-border text-app-textLight text-xs shadow-sm mr-auto font-bold animate-pulse">AI is typing...</div>`);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                const sysPrompt = "You are an AI teaching assistant for Mr. Shaikh Faizan Sajjad. Answer queries about Biology, Java, or IT in a very friendly, modern, concise way using emojis.";
+                const response = await this.callGeminiAPI(text, sysPrompt);
+                
+                document.getElementById(typingId).remove();
+                this.appendChatMessage(response, false);
+                inputEl.disabled = false;
+                inputEl.focus();
+            },
+
+            scrollToContact() {
+                const hash = window.location.hash;
+                if (hash === '#public' || hash === '') {
+                    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.location.hash = '#public';
+                    setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }
+            },
+
+            goHome() {
+                const hash = window.location.hash;
+                if (hash === '#public' || hash === '') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    window.location.hash = '#public';
+                }
+            },
+
+            ui: {
+                showModal(title, message, type = 'info', onConfirm = null) {
+                    const modal = document.getElementById('custom-modal');
+                    document.getElementById('modal-title').textContent = title;
+                    document.getElementById('modal-message').textContent = message;
+                    
+                    const iconEl = document.getElementById('modal-icon');
+                    const cancelBtn = document.getElementById('modal-btn-cancel');
+                    const confirmBtn = document.getElementById('modal-btn-confirm');
+                    
+                    iconEl.className = 'mx-auto flex items-center justify-center h-14 w-14 rounded-[1.2rem] mb-4 ';
+                    if (type === 'error') { iconEl.className += 'bg-red-50 text-red-500'; iconEl.innerHTML = '<i class="fas fa-exclamation-triangle text-xl"></i>'; }
+                    else if (type === 'confirm') { iconEl.className += 'bg-yellow-50 text-yellow-500'; iconEl.innerHTML = '<i class="fas fa-question text-xl"></i>'; }
+                    else { iconEl.className += 'bg-app-secondary/30 text-app-text'; iconEl.innerHTML = '<i class="fas fa-info-circle text-xl"></i>'; }
+
+                    if (onConfirm) {
+                        cancelBtn.classList.remove('hidden');
+                        confirmBtn.onclick = () => { onConfirm(); modal.classList.add('hidden'); };
+                        cancelBtn.onclick = () => { modal.classList.add('hidden'); };
+                    } else {
+                        cancelBtn.classList.add('hidden');
+                        confirmBtn.onclick = () => { modal.classList.add('hidden'); };
+                    }
+                    modal.classList.remove('hidden');
+                },
+                setLoading(btnId, isLoading) {
+                    const btn = document.getElementById(btnId);
+                    if (!btn) return;
+                    if (isLoading) {
+                        if (!btn.hasAttribute('data-original-html')) btn.setAttribute('data-original-html', btn.innerHTML);
+                        btn.innerHTML = '<div class="loader mx-auto border-app-bg border-t-transparent w-4 h-4"></div>';
+                        btn.disabled = true;
+                        btn.classList.add('opacity-75');
+                    } else {
+                        if (btn.hasAttribute('data-original-html')) { btn.innerHTML = btn.getAttribute('data-original-html'); }
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-75');
+                    }
+                }
+            },
+
+            initAuth() {
+                let isFirstAuth = true;
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        this.currentUser = user;
+                        if (isFirstAuth) { isFirstAuth = false; this.startDataListeners(); }
+                        this.handleRoute();
+                    } else {
+                        this.currentUser = null;
+                        signInAnonymously(auth).catch(() => {
+                            this.useLocalFallback = true;
+                            this.startDataListeners();
+                            this.handleRoute();
+                        });
+                    }
+                });
+            },
+
+            handleRoute() {
+                const hash = window.location.hash || '#public';
+                const root = document.getElementById('app-root');
+                const templates = document.getElementById('templates');
+                
+                if (document.getElementById('active-public-view')) {
+                    this.lastPublicScroll = window.scrollY;
+                }
+
+                root.innerHTML = '';
+
+                if (hash.startsWith('#admin')) {
+                    if (this.currentUser && !this.currentUser.isAnonymous) {
+                        const dash = templates.querySelector('#tpl-admin-dashboard').cloneNode(true);
+                        dash.id = 'active-admin-dashboard';
+                        root.appendChild(dash);
+                        this.loadAdminModule(this.currentAdminModule);
+                    } else {
+                        const login = templates.querySelector('#tpl-admin-login').cloneNode(true);
+                        login.id = 'active-admin-login';
+                        root.appendChild(login);
+                        this.bindLoginForm();
+                    }
+                } else if (hash === '#public-all-subjects') {
+                    const view = templates.querySelector('#tpl-public-all-subjects').cloneNode(true);
+                    view.id = 'active-public-all-subjects';
+                    root.appendChild(view);
+                    this.renderFullGrid('subjects', 'full-subjects-grid');
+                    window.scrollTo(0,0);
+                } else if (hash === '#public-all-resources') {
+                    const view = templates.querySelector('#tpl-public-all-resources').cloneNode(true);
+                    view.id = 'active-public-all-resources';
+                    root.appendChild(view);
+                    this.renderFullGrid('resources', 'full-resources-grid');
+                    window.scrollTo(0,0);
+                } else if (hash === '#public-journey') {
+                    const view = templates.querySelector('#tpl-public-journey').cloneNode(true);
+                    view.id = 'active-public-journey';
+                    root.appendChild(view);
+                    this.renderFullGrid('journey', 'full-journey-grid');
+                    window.scrollTo(0,0);
+                } else {
+                    const pub = templates.querySelector('#tpl-public-view').cloneNode(true);
+                    pub.id = 'active-public-view';
+                    root.appendChild(pub);
+                    this.renderPublicData();
+                    setTimeout(() => window.scrollTo({ top: this.lastPublicScroll, behavior: 'instant' }), 0);
+                }
+                
+                if(window.triggerReveal) setTimeout(window.triggerReveal, 100);
+            },
+
+            bindLoginForm() {
+                const form = document.getElementById('login-form');
+                if(!form) return;
+                form.onsubmit = async (e) => {
+                    e.preventDefault();
+                    this.ui.setLoading('login-btn', true);
+                    const email = document.getElementById('login-email').value;
+                    const pass = document.getElementById('login-password').value;
+                    
+                    if(email === 'admin@demo.com' && pass === 'admin123') {
+                        this.ui.setLoading('login-btn', false);
+                        this.currentUser = { uid: 'demo-admin', email: 'admin@demo.com', isAnonymous: false };
+                        this.handleRoute();
+                        this.ui.showModal('Demo Mode', 'Logged in via Demo Mode successfully.', 'info');
+                        return;
+                    }
+
+                    try {
+                        await signInWithEmailAndPassword(auth, email, pass);
+                    } catch (err) {
+                        this.ui.setLoading('login-btn', false);
+                        this.ui.showModal('Login Failed', err.message + ' (Tip: Use admin@demo.com and admin123)', 'error');
+                    }
+                };
+            },
+            
+            async logout() {
+                await signOut(auth);
+                window.location.hash = '#public';
+            },
+
+            startDataListeners() {
+                if(!db || this.useLocalFallback) {
+                    this.refreshUIViews();
+                    return;
+                }
+
+                this.unsubscribeList.forEach(unsub => unsub());
+                this.unsubscribeList = [];
+
+                ['subjects', 'resources', 'videos', 'journey'].forEach(module => {
+                    const ref = collection(db, this.getCollectionPath(`portfolio_${module}`));
+                    const unsub = onSnapshot(ref, (snapshot) => {
+                        if (!snapshot.empty) {
+                            this.data[module] = [];
+                            snapshot.forEach(doc => this.data[module].push({ id: doc.id, ...doc.data() }));
+                        }
+                        this.isFetching[module] = false;
+                        this.refreshUIViews();
+                    }, (error) => {
+                        // Fallback gracefully on permission denied
+                        this.useLocalFallback = true;
+                        this.isFetching[module] = false;
+                        this.refreshUIViews();
+                    });
+                    this.unsubscribeList.push(unsub);
+                });
+            },
+
+            refreshUIViews() {
+                const hash = window.location.hash || '#public';
+                if (hash === '#public') this.renderPublicData();
+                else if (hash === `#public-all-subjects`) this.renderFullGrid('subjects', 'full-subjects-grid');
+                else if (hash === `#public-all-resources`) this.renderFullGrid('resources', 'full-resources-grid');
+                else if (hash === `#public-journey`) this.renderFullGrid('journey', 'full-journey-grid');
+                else if (hash.startsWith('#admin') && this.currentAdminModule) this.renderAdminList(this.currentAdminModule);
+            },
+
+            renderPublicData() {
+                const subjContainer = document.getElementById('subjects-carousel');
+                if (subjContainer) {
+                    if (this.isFetching.subjects) {
+                        subjContainer.innerHTML = Array(3).fill(`<div class="carousel-item w-[80vw] sm:w-[280px] skeleton rounded-[2rem] h-[180px] flex-shrink-0"></div>`).join('');
+                    } else if (this.data.subjects.length === 0) {
+                        subjContainer.innerHTML = `<div class="w-full text-center text-app-textLight py-8 text-xs font-medium">No subjects found.</div>`;
+                    } else {
+                        subjContainer.innerHTML = this.data.subjects.map(sub => `
+                            <div onclick="window.location.hash='#public-all-subjects'" class="carousel-item w-[80vw] max-w-[280px] sm:w-[280px] bento-card p-6 flex-shrink-0 cursor-pointer relative overflow-hidden group">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-app-text group-hover:bg-app-text group-hover:text-app-bg transition-colors overflow-hidden">
+                                        ${sub.image ? `<img src="${sub.image}" class="w-full h-full object-cover">` : `<i class="fas fa-book text-xs"></i>`}
+                                    </div>
+                                    <button id="tts-btn-${sub.id}" onclick="event.stopPropagation(); app.playAudioSummary('${(sub.title||'').replace(/'/g, "\\'")}', '${(sub.description||'').replace(/'/g, "\\'")}', 'tts-btn-${sub.id}')" class="w-7 h-7 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 flex items-center justify-center hover:scale-110 transition-transform shadow-sm">
+                                        <i class="fas fa-volume-up text-[10px]"></i>
+                                    </button>
+                                </div>
+                                <h3 class="text-base font-bold text-app-text mb-1 line-clamp-1">${sub.title || 'Untitled'}</h3>
+                                <p class="text-[9px] font-bold text-app-textLight mb-2 uppercase tracking-widest">${sub.classes || 'Various Levels'}</p>
+                                <p class="text-app-textLight text-xs font-medium leading-relaxed line-clamp-2">${sub.description || ''}</p>
+                            </div>
+                        `).join('');
+                        setTimeout(() => {
+                            const btns = document.getElementById('subjects-nav-btns');
+                            if (btns) subjContainer.scrollWidth > subjContainer.clientWidth ? btns.classList.remove('hidden') : btns.classList.add('hidden');
+                        }, 100);
+                    }
+                }
+
+                const demosContainer = document.getElementById('render-demos');
+                if(demosContainer) {
+                    const demoList = [
+                        { title: "Introduction to Java OOP", subject: "Java Programming", level: "Class 11-12", duration: "12 mins", link: "https://youtube.com" },
+                        { title: "Cell Structure & Function", subject: "Biology", level: "Class 11", duration: "15 mins", link: "https://youtube.com" },
+                        { title: "Database Management Basics", subject: "Information Technology", level: "Class 12", duration: "10 mins", link: "https://youtube.com" }
+                    ];
+                    demosContainer.innerHTML = demoList.map(demo => `
+                        <div class="bento-card p-5 flex flex-col bg-app-card border border-app-border">
+                            <span class="text-[9px] font-bold px-2.5 py-1 bg-app-bg border border-app-border rounded-md text-app-text uppercase tracking-widest self-start mb-3">${demo.subject}</span>
+                            <h4 class="font-bold text-sm text-app-text mb-1">${demo.title}</h4>
+                            <p class="text-[10px] text-app-textLight font-bold mb-4 uppercase tracking-wider">${demo.level} • ${demo.duration}</p>
+                            <a href="${demo.link}" target="_blank" class="w-full py-2.5 bg-app-bg border border-app-border text-app-text text-[11px] font-bold rounded-xl text-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mt-auto flex items-center justify-center gap-2">
+                                <i class="fas fa-play text-[9px] text-red-600"></i> Watch Lecture
+                            </a>
+                        </div>
+                    `).join('');
+                }
+
+                const resContainer = document.getElementById('resources-carousel');
+                if (resContainer) {
+                    if (this.isFetching.resources) {
+                        resContainer.innerHTML = Array(4).fill(`<div class="carousel-item w-[75vw] sm:w-[240px] skeleton rounded-[2rem] h-[140px] flex-shrink-0"></div>`).join('');
+                    } else if (this.data.resources.length === 0) {
+                        resContainer.innerHTML = `<div class="w-full text-center text-app-textLight py-8 text-xs font-medium">No resources found.</div>`;
+                    } else {
+                        resContainer.innerHTML = this.data.resources.map(res => `
+                            <div class="carousel-item w-[75vw] max-w-[260px] sm:w-[260px] bento-card p-5 flex flex-col relative overflow-hidden flex-shrink-0">
+                                <span class="text-[9px] font-bold px-2.5 py-1 bg-app-bg border border-app-border rounded-md text-app-text uppercase tracking-widest self-start mb-3">${res.type || 'Doc'}</span>
+                                <h4 class="font-bold text-sm text-app-text mb-1 leading-tight line-clamp-2">${res.title || 'Untitled'}</h4>
+                                <p class="text-[10px] font-bold text-app-textLight mb-4 flex-grow uppercase tracking-wider line-clamp-1">${res.subject || ''}</p>
+                                <a href="${res.link || '#'}" target="_blank" class="w-full py-2.5 bg-app-bg border border-app-border text-app-text text-[11px] font-bold rounded-xl text-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mt-auto">Download</a>
+                            </div>
+                        `).join('');
+                        setTimeout(() => {
+                            const btns = document.getElementById('resources-nav-btns');
+                            if (btns) resContainer.scrollWidth > resContainer.clientWidth ? btns.classList.remove('hidden') : btns.classList.add('hidden');
+                        }, 100);
+                    }
+                }
+            },
+
+            initTheme() {
+                if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            },
+            
+            toggleTheme() {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            },
+
+            downloadResume() {
+                this.ui.showModal('Resume', 'Resume download functionality is ready.', 'info');
+            },
+
+            filterList(type) {
+                const term = document.getElementById(`search-${type}`).value.toLowerCase();
+                const cards = document.querySelectorAll(`#full-${type}-grid > div`);
+                cards.forEach(card => {
+                    const text = card.innerText.toLowerCase();
+                    card.style.display = text.includes(term) ? 'flex' : 'none';
+                });
+            },
+
+            renderFullGrid(module, containerId) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                if (this.isFetching[module]) {
+                    container.innerHTML = Array(6).fill(`<div class="skeleton rounded-[2rem] h-[180px] w-full"></div>`).join('');
+                    return;
+                }
+                
+                if (this.data[module].length === 0) {
+                    container.innerHTML = `<div class="col-span-full text-center py-10 text-app-textLight text-xs font-medium">No items found.</div>`;
+                    return;
+                }
+
+                if (module === 'subjects') {
+                    container.innerHTML = this.data.subjects.map(sub => `
+                        <div class="bento-card p-6 flex flex-col relative group hover:-translate-y-1 transition-transform">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-app-text group-hover:bg-app-text group-hover:text-app-bg transition-colors overflow-hidden">
+                                    ${sub.image ? `<img src="${sub.image}" class="w-full h-full object-cover">` : `<i class="fas fa-book text-xs"></i>`}
+                                </div>
+                                <button id="tts-grid-btn-${sub.id}" onclick="event.stopPropagation(); app.playAudioSummary('${(sub.title||'').replace(/'/g, "\\'")}', '${(sub.description||'').replace(/'/g, "\\'")}', 'tts-grid-btn-${sub.id}')" class="w-7 h-7 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 flex items-center justify-center hover:scale-110 transition-transform shadow-sm">
+                                    <i class="fas fa-volume-up text-[10px]"></i>
+                                </button>
+                            </div>
+                            <h3 class="text-base font-bold text-app-text mb-1">${sub.title || 'Untitled'}</h3>
+                            <p class="text-[9px] font-bold text-app-textLight mb-2 uppercase tracking-widest">${sub.classes || 'Various Levels'}</p>
+                            <p class="text-app-textLight text-xs font-medium leading-relaxed">${sub.description || ''}</p>
+                        </div>
+                    `).join('');
+                } else if (module === 'resources') {
+                    container.innerHTML = this.data.resources.map(res => `
+                        <div class="bento-card p-6 flex flex-col relative group hover:-translate-y-1 transition-transform">
+                            <span class="text-[9px] font-bold px-2.5 py-1 bg-app-bg border border-app-border rounded-md text-app-text uppercase tracking-widest self-start mb-3">${res.type || 'Doc'}</span>
+                            <h4 class="font-bold text-base text-app-text mb-1 leading-tight">${res.title || 'Untitled'}</h4>
+                            <p class="text-[10px] font-bold text-app-textLight mb-5 flex-grow uppercase tracking-wider">${res.subject || ''}</p>
+                            <a href="${res.link || '#'}" target="_blank" class="w-full py-2.5 bg-app-bg border border-app-border text-app-text text-[11px] font-bold rounded-xl text-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mt-auto">Download Document</a>
+                        </div>
+                    `).join('');
+                } else if (module === 'journey') {
+                    container.innerHTML = this.data.journey.map(item => `
+                        <div class="bento-card overflow-hidden break-inside-avoid relative group mb-5">
+                            ${item.type === 'feedback' ? `<div class="absolute top-3 right-3 w-7 h-7 bg-green-500 text-white rounded-full flex items-center justify-center z-10 shadow-md"><i class="fab fa-whatsapp text-xs"></i></div>` : ''}
+                            ${item.image ? `<img src="${item.image}" class="w-full h-auto object-cover" loading="lazy">` : `<div class="w-full h-36 bg-app-secondary flex items-center justify-center"><i class="fas fa-image text-2xl text-app-textLight"></i></div>`}
+                            <div class="p-4">
+                                <p class="text-xs font-medium text-app-text">${item.caption || 'A memorable moment.'}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            },
+
+            loadAdminModule(module) {
+                this.currentAdminModule = module;
+                document.querySelectorAll('.admin-nav-btn').forEach(btn => {
+                    if(btn.dataset.module === module) {
+                        btn.classList.add('bg-app-text', 'text-app-bg', 'shadow-sm');
+                        btn.classList.remove('bg-app-bg', 'text-app-textLight');
+                    } else {
+                        if(!btn.classList.contains('bg-indigo-50')) {
+                            btn.classList.remove('bg-app-text', 'text-app-bg', 'shadow-sm');
+                            btn.classList.add('bg-app-bg', 'text-app-textLight');
+                        }
+                    }
+                });
+                
+                document.getElementById('admin-module-title').textContent = module.charAt(0).toUpperCase() + module.slice(1);
+                const contentEl = document.getElementById('admin-module-content');
+                const addBtn = document.getElementById('admin-add-btn');
+                
+                if (module === 'overview') {
+                    addBtn.classList.add('hidden');
+                    contentEl.innerHTML = `
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-app-bg p-5 rounded-[1.2rem] border border-app-border text-center">
+                                <h3 class="text-2xl font-extrabold text-app-text mb-0.5">${this.data.subjects.length}</h3>
+                                <p class="text-[10px] font-bold text-app-textLight uppercase tracking-widest">Subjects</p>
+                            </div>
+                            <div class="bg-app-bg p-5 rounded-[1.2rem] border border-app-border text-center">
+                                <h3 class="text-2xl font-extrabold text-app-text mb-0.5">${this.data.resources.length}</h3>
+                                <p class="text-[10px] font-bold text-app-textLight uppercase tracking-widest">Resources</p>
+                            </div>
+                            <div class="bg-app-bg p-5 rounded-[1.2rem] border border-app-border text-center">
+                                <h3 class="text-2xl font-extrabold text-app-text mb-0.5">${this.data.journey.length}</h3>
+                                <p class="text-[10px] font-bold text-app-textLight uppercase tracking-widest">Journey Posts</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (module === 'ailab') {
+                    addBtn.classList.add('hidden');
+                    contentEl.innerHTML = `
+                        <div class="text-center max-w-md mx-auto py-6">
+                            <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 mx-auto rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-magic text-lg"></i>
+                            </div>
+                            <h3 class="text-base font-bold mb-1 text-app-text">AI Content Generator</h3>
+                            <p class="text-xs text-app-textLight mb-6">Quickly generate lesson plans, MCQs, or explanations.</p>
+                            
+                            <div class="space-y-3 text-left">
+                                <input type="text" id="ai-topic" placeholder="e.g. Photosynthesis, Java Loops" class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] text-xs focus:border-indigo-500 outline-none">
+                                <select id="ai-type" class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] text-xs focus:border-indigo-500 outline-none">
+                                    <option value="mcq">Generate 5 MCQs with Answers</option>
+                                    <option value="lesson">5-Step Lesson Plan</option>
+                                    <option value="eli5">Explain Like I'm 5 (Simple)</option>
+                                </select>
+                                <button onclick="app.generateAIContent()" id="ai-generate-btn" class="w-full py-3.5 bg-indigo-600 text-white rounded-[0.8rem] font-bold shadow-md hover:bg-indigo-700 transition-colors text-xs">Generate Content</button>
+                            </div>
+                            <div id="ai-output" class="mt-6 text-left hidden p-5 bg-app-bg border border-app-border rounded-[1rem] text-xs font-medium whitespace-pre-wrap"></div>
+                        </div>
+                    `;
+                } else {
+                    addBtn.classList.remove('hidden');
+                    addBtn.onclick = () => this.showForm(module);
+                    this.renderAdminList(module);
+                }
+            },
+
+            async generateAIContent() {
+                const topic = document.getElementById('ai-topic').value.trim();
+                const type = document.getElementById('ai-type').value;
+                if(!topic) return this.ui.showModal('Error', 'Please enter a topic', 'error');
+                
+                this.ui.setLoading('ai-generate-btn', true);
+                const output = document.getElementById('ai-output');
+                output.classList.remove('hidden');
+                output.textContent = "AI is thinking...";
+
+                let prompt = `Create content about: ${topic}. `;
+                if(type === 'mcq') prompt += "Generate 5 multiple choice questions with options and correct answers.";
+                if(type === 'lesson') prompt += "Create a 5-step lesson plan.";
+                if(type === 'eli5') prompt += "Explain this concept in a simple way suitable for beginners.";
+
+                const result = await this.callGeminiAPI(prompt, "You are an expert teacher. Provide clear educational content.");
+                output.innerHTML = result.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                this.ui.setLoading('ai-generate-btn', false);
+            },
+
+            renderAdminList(module) {
+                const contentEl = document.getElementById('admin-module-content');
+                if(this.isFetching[module]) {
+                    contentEl.innerHTML = `<div class="loader mx-auto my-8 border-app-bg border-t-app-text w-6 h-6"></div>`;
+                    return;
+                }
+                if(this.data[module].length === 0) {
+                    contentEl.innerHTML = `<div class="text-center py-8 text-app-textLight text-xs font-medium">No ${module} found. Click 'Add New'.</div>`;
+                    return;
+                }
+                
+                contentEl.innerHTML = `<div class="space-y-3">` + this.data[module].map(item => `
+                    <div class="flex items-center justify-between p-3.5 bg-app-bg border border-app-border rounded-[0.8rem]">
+                        <div>
+                            <h4 class="font-bold text-app-text text-xs">${item.title || item.caption || 'Untitled'}</h4>
+                            <p class="text-[10px] text-app-textLight mt-0.5 uppercase tracking-widest">${item.classes || item.subject || item.type || ''}</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="app.showForm('${module}', '${item.id}')" class="w-7 h-7 bg-app-card border border-app-border rounded-md text-app-text hover:bg-app-text hover:text-app-bg transition-colors"><i class="fas fa-pen text-[10px]"></i></button>
+                            <button onclick="app.deleteItem('${module}', '${item.id}')" class="w-7 h-7 bg-app-card border border-app-border rounded-md text-red-500 hover:bg-red-500 hover:text-white transition-colors"><i class="fas fa-trash text-[10px]"></i></button>
+                        </div>
+                    </div>
+                `).join('') + `</div>`;
+            },
+
+            showForm(module, id = null) {
+                const contentEl = document.getElementById('admin-module-content');
+                document.getElementById('admin-add-btn').classList.add('hidden');
+                
+                contentEl.innerHTML = document.getElementById('templates').querySelector('#tpl-crud-form').innerHTML;
+                const fieldsContainer = document.getElementById('form-fields-container');
+                const item = id ? this.data[module].find(i => i.id === id) : {};
+                
+                const imageFieldHTML = `
+                    <div>
+                        <label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Cover Image (URL or AI Gen)</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="form-image" value="${item.image || ''}" class="flex-1 px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors" placeholder="Image URL or Base64">
+                            <button type="button" onclick="app.generateFormImage()" class="px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 rounded-[0.8rem] border border-indigo-100 dark:border-indigo-800 hover:bg-indigo-100 transition-colors font-bold text-xs">
+                                <i class="fas fa-magic"></i> AI Image
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                let fieldsHTML = '';
+                if (module === 'subjects') {
+                    fieldsHTML = `
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Subject Title</label><input type="text" id="form-title" value="${item.title || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Classes / Level</label><input type="text" id="form-classes" value="${item.classes || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Description</label><textarea id="form-desc" rows="3" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors">${item.description || ''}</textarea></div>
+                        ${imageFieldHTML}
+                    `;
+                } else if (module === 'resources') {
+                    fieldsHTML = `
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Resource Title</label><input type="text" id="form-title" value="${item.title || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Subject</label><input type="text" id="form-subject" value="${item.subject || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                            <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Type</label><input type="text" id="form-type" value="${item.type || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        </div>
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Link (URL)</label><input type="url" id="form-link" value="${item.link || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        ${imageFieldHTML}
+                    `;
+                } else if (module === 'journey') {
+                    fieldsHTML = `
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Caption</label><input type="text" id="form-caption" value="${item.caption || ''}" required class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"></div>
+                        <div><label class="block text-[10px] font-bold text-app-textLight mb-1.5 uppercase tracking-widest">Type</label><select id="form-type" class="w-full px-4 py-3 bg-app-bg border border-app-border rounded-[0.8rem] outline-none text-xs font-medium focus:border-app-text transition-colors"><option value="photo" ${item.type==='photo'?'selected':''}>Classroom Photo</option><option value="feedback" ${item.type==='feedback'?'selected':''}>WhatsApp Feedback</option></select></div>
+                        ${imageFieldHTML}
+                    `;
+                }
+                
+                fieldsContainer.innerHTML = fieldsHTML;
+                
+                document.getElementById('dynamic-form').onsubmit = async (e) => {
+                    e.preventDefault();
+                    this.ui.setLoading('form-submit-btn', true);
+                    let newData = {};
+                    
+                    if(module === 'subjects') {
+                        newData = { id: id || 'sub-' + Date.now(), title: document.getElementById('form-title').value, classes: document.getElementById('form-classes').value, description: document.getElementById('form-desc').value, image: document.getElementById('form-image')?.value || '', updatedAt: new Date().toISOString() };
+                    } else if (module === 'resources') {
+                        newData = { id: id || 'res-' + Date.now(), title: document.getElementById('form-title').value, subject: document.getElementById('form-subject').value, type: document.getElementById('form-type').value, link: document.getElementById('form-link').value, image: document.getElementById('form-image')?.value || '', updatedAt: new Date().toISOString() };
+                    } else if (module === 'journey') {
+                        newData = { id: id || 'j-' + Date.now(), caption: document.getElementById('form-caption').value, type: document.getElementById('form-type').value, image: document.getElementById('form-image')?.value || '', updatedAt: new Date().toISOString() };
+                    }
+
+                    try {
+                        if(!this.useLocalFallback && db) {
+                            const ref = collection(db, this.getCollectionPath(`portfolio_${module}`));
+                            if (id) {
+                                await updateDoc(doc(db, this.getCollectionPath(`portfolio_${module}`), id), newData);
+                            } else {
+                                await addDoc(ref, newData);
+                            }
+                        } else {
+                            // Local fallback save
+                            if(id) {
+                                const idx = this.data[module].findIndex(i => i.id === id);
+                                if(idx !== -1) this.data[module][idx] = newData;
+                            } else {
+                                this.data[module].unshift(newData);
+                            }
+                        }
+                        this.ui.showModal('Success', 'Item saved successfully.');
+                        this.renderAdminList(module);
+                        document.getElementById('admin-add-btn').classList.remove('hidden');
+                    } catch (err) {
+                        // Fallback to local array
+                        if(id) {
+                            const idx = this.data[module].findIndex(i => i.id === id);
+                            if(idx !== -1) this.data[module][idx] = newData;
+                        } else {
+                            this.data[module].unshift(newData);
+                        }
+                        this.ui.showModal('Success', 'Item saved successfully (Local Mode).');
+                        this.renderAdminList(module);
+                        document.getElementById('admin-add-btn').classList.remove('hidden');
+                    }
+                };
+            },
+
+            closeForm() {
+                document.getElementById('admin-add-btn').classList.remove('hidden');
+                this.renderAdminList(this.currentAdminModule);
+            },
+            
+            async enhanceContentWithAI() {
+                const descEl = document.getElementById('form-desc');
+                if(!descEl || !descEl.value.trim()) return this.ui.showModal('Notice', 'Please write a rough draft in description first.', 'info');
+                
+                const originalText = descEl.value;
+                descEl.value = "AI is enhancing...";
+                descEl.disabled = true;
+                
+                const sys = "Rewrite to be more engaging, professional, and clear. Return only the enhanced text.";
+                const result = await this.callGeminiAPI(originalText, sys);
+                
+                descEl.value = result;
+                descEl.disabled = false;
+            },
+
+            deleteItem(module, id) {
+                this.ui.showModal('Confirm Deletion', 'Are you sure you want to delete this item?', 'confirm', async () => {
+                    try {
+                        if(!this.useLocalFallback && db) {
+                            await deleteDoc(doc(db, this.getCollectionPath(`portfolio_${module}`), id));
+                        }
+                        this.data[module] = this.data[module].filter(i => i.id !== id);
+                        this.renderAdminList(module);
+                        this.ui.showModal('Deleted', 'Item removed.', 'info');
+                    } catch(err) {
+                        this.data[module] = this.data[module].filter(i => i.id !== id);
+                        this.renderAdminList(module);
+                        this.ui.showModal('Deleted', 'Item removed.', 'info');
+                    }
+                });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            app.initTheme(); 
+            window.triggerReveal = () => {
+                const reveals = document.querySelectorAll('.reveal:not(.active)');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                reveals.forEach(el => observer.observe(el));
+            };
+            window.addEventListener('hashchange', () => app.handleRoute());
+            app.initAuth();
+        });
+    </script>
+</body>
+</html>
